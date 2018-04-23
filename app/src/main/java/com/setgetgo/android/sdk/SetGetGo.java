@@ -132,13 +132,19 @@ public class SetGetGo implements ISetGetGo
             uri = uri.substring(0, uri.length() - 1);
         }
 
-        urlConnection = (HttpURLConnection) new URL(uri).openConnection();
+        URL url = new URL(uri);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("GET");
+        urlConnection.setReadTimeout(10000);
+        urlConnection.setConnectTimeout(15000);
+        urlConnection.setDoOutput(true);
+        urlConnection.connect();
 
         int responseCode = urlConnection.getResponseCode();
 
         if (responseCode == HttpURLConnection.HTTP_OK)
         {
-            String response = readStream(urlConnection.getInputStream());
+           String response = readStream(urlConnection.getInputStream());
 
             return new JSONObject(response);
         }

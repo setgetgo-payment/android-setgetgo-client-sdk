@@ -8,7 +8,7 @@ public class Payment
     /**
      * The amount.
      */
-    private float amount;
+    private double amount;
 
     /**
      * The merchant address.
@@ -29,7 +29,7 @@ public class Payment
      * Gets the amount.
      * @return
      */
-    public float getAmount()
+    public double getAmount()
     {
         return amount;
     }
@@ -38,7 +38,7 @@ public class Payment
      * Sets the amount.
      * @return
      */
-    public void setAmount(float amount)
+    public void setAmount(double amount)
     {
         this.amount = amount;
     }
